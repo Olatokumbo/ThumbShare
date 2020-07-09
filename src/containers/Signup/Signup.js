@@ -11,7 +11,7 @@ const Signup = () => {
       <div className={style.right}>
       <div className={style.brand}>
       <img className={style.logo} src={logo} alt="logo.png" />
-      <Typography variant="h6">ThumbVote</Typography>
+      <Typography variant="h6">ThumbShare</Typography>
       </div>
       <form className={style.form}>
         <div className={style.name}>

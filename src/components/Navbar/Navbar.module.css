@@ -1,0 +1,79 @@
+.container{
+    background-color: #18599d !important;
+    padding: 0.5rem 0.5rem !important;
+    /* margin-bottom: 1rem !important; */
+    width: 100% !important;
+    overflow: hidden !important;
+}
+.toolbar{
+    display: flex !important;
+    justify-content: space-between !important;
+}
+.brand{
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+}
+.logo{
+    height: 2rem;
+    width: auto;
+}
+
+/* .searchInput{
+    background-color: rgba(148, 148, 148, 0.54) !important;
+    margin: 0 1rem !important;
+    border-radius: 25px !important;
+    box-shadow: none;
+    border: none;
+    padding: 0.8rem 1rem;
+    outline: none;
+    width: auto;
+} */
+
+.name{
+    color: white !important;
+    margin-left: 5px !important;
+}
+::placeholder { /* Most modern browsers support this now. */
+    color:    #e0e0e0;
+ }
+ input, select, textarea{
+    color: #e0e0e0;
+}
+.utility{
+    display: flex;
+    align-items: center;
+}
+.profile{
+    display: flex;
+    align-items: center;
+    background-color: #0c3f74;
+    border-radius: 20px;
+    margin-left: 1rem;
+}
+.profileName{
+    margin: 0 0.5rem !important;
+}
+.profileImage{
+    height: 2rem;
+    width: auto;
+    border-radius: 20px;
+    margin: 3px;
+}
+
+@media only screen and (max-width: 400px) {
+    .profileName{
+        display: none;
+    }
+    .container{
+        padding:  0.5rem 0 !important;
+    }
+      }
+/* @media only screen and (max-width: 390px){
+    .searchInput{
+        width: -webkit-fill-available;
+    }
+    .brand{
+        width: 11rem;
+    }
+} */
