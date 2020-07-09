@@ -21,7 +21,7 @@ body{
     background-position: center;
     background-size: cover;
     background-attachment: inherit;
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
     /* width: 20rem; */
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
