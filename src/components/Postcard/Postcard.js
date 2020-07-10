@@ -5,7 +5,7 @@ import post from "../../assets/images/post.jpg";
 import style from "./PostCard.module.css";
 const PostCard = () => {
   return (
-      <Grid item component={Card} md={5} xs={12} className={style.card}>
+      <Grid item component={Card} md={5} xs={11} className={style.card}>
         <CardHeader
           avatar={<Avatar aria-label="username">R</Avatar>}
           title="Shrimp and Chorizo Paella"

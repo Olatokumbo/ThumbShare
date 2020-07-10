@@ -1,0 +1,17 @@
+.card{
+    width: inherit !important;
+    margin: 0.5rem 1rem !important;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.upload{
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
