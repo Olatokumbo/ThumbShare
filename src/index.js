@@ -1,11 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {createStore, combineReducers, applyMiddleware} from "redux";
+import {createStore, combineReducers, applyMiddleware, compose} from "redux";
 import thunk from "redux-thunk";
 import {Provider} from "react-redux";
 import firebase from "./firebase/firebase";
 import {authReducer, postReducer} from "./store/reducers";
+import * as actionType from "./store/actions/actionTypes";
 import App from "./App";
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 const rootReducer = combineReducers({
     auth: authReducer,
     post: postReducer
@@ -13,14 +17,15 @@ const rootReducer = combineReducers({
 
 const store = createStore(
     rootReducer,
-    applyMiddleware(thunk)
+    composeEnhancers(applyMiddleware(thunk))
 );
 
-ReactDOM.render(<Provider store={store}><App/></Provider>, document.getElementById("root"));
-
 firebase.auth().onAuthStateChanged((user)=>{
+    ReactDOM.render(<Provider store={store}><App/></Provider>, document.getElementById("root"));
     if(user){
         console.log("LOGGED IN USER")
+        // console.log(user.uid);
+        store.dispatch({type: actionType.SIGNIN_SUCCESS, uid: user.uid});
     }
     else{
         console.log("LOGGED OUT USER")
