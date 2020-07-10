@@ -3,8 +3,10 @@ import {Toolbar, AppBar, Typography, Menu, MenuItem } from "@material-ui/core";
 import {Link} from "react-router-dom"; 
 import logo from "../../assets/images/share.png";
 import profile from "../../assets/images/default.jpg";
+import {connect} from "react-redux";
+import * as actionCreator from "../../store/actions";
 import style from "./Navbar.module.css";
-const Navbar = () =>{
+const Navbar = ({logout}) =>{
     const [anchorEl, setAnchorEl] = useState(null);
 
     const handleClick = (event) => {
@@ -23,7 +25,7 @@ const Navbar = () =>{
             </Link>
             { /*<input
               className={style.searchInput}
-              placeholder="Search in Convey..."
+              placeholder="Search in ThumbShare..."
             /> */}
           <Typography variant="h5" className={style.name}>ThumbShare</Typography>
           </div>
@@ -52,7 +54,7 @@ const Navbar = () =>{
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-              <MenuItem>Logout</MenuItem>
+              <MenuItem onClick={logout}>Logout</MenuItem>
               </Menu>
             </div>
           </div>
@@ -60,4 +62,11 @@ const Navbar = () =>{
       </AppBar>
     )
 }
-export default Navbar;
+
+const mapDispatchToProps = (dispatch) =>{
+  return{
+    logout: () => dispatch(actionCreator.startSignout()) 
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Navbar);
