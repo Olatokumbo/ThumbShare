@@ -6,7 +6,7 @@ import profile from "../../assets/images/default.jpg";
 import {connect} from "react-redux";
 import * as actionCreator from "../../store/actions";
 import style from "./Navbar.module.css";
-const Navbar = ({logout}) =>{
+const Navbar = ({logout, displayName}) =>{
     const [anchorEl, setAnchorEl] = useState(null);
 
     const handleClick = (event) => {
@@ -37,7 +37,7 @@ const Navbar = ({logout}) =>{
                 variant="body2"
                 color="inherit"
               >
-                {"David King"}
+                {displayName}
               </Typography>
               <img
                 className={style.profileImage}
@@ -63,10 +63,16 @@ const Navbar = ({logout}) =>{
     )
 }
 
+const mapStateToProps = (state) =>{
+  return{
+    displayName: state.auth.displayName
+  }
+}
+
 const mapDispatchToProps = (dispatch) =>{
   return{
     logout: () => dispatch(actionCreator.startSignout()) 
   }
 }
 
-export default connect(null, mapDispatchToProps)(Navbar);
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

@@ -1,6 +1,7 @@
 import * as actionTypes from "../actions/actionTypes";
 const initialState = {
   posts: [],
+  progress: 0
 };
 
 const postReducer = (state = initialState, action) => {
@@ -9,6 +10,16 @@ const postReducer = (state = initialState, action) => {
       return {
         ...state,
         posts: action.posts,
+      }
+    case actionTypes.PROGESS:
+      return{
+        ...state,
+        progress: action.progress
+      }
+    case actionTypes.RESET:
+      return{
+        ...state,
+        progress: 0
       }
     default:
       return state;

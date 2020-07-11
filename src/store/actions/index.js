@@ -7,5 +7,6 @@ export {
 
 export {
     fetchPosts,
+    addPosts,
     unsubscribePosts
 } from "./posts";
