@@ -37,10 +37,15 @@ export const startSignout = () =>{
         firebase
         .auth()
         .signOut().then(()=>{
-            console.log("TESTERING");
             dispatch({type: actionTypes.SIGNOUT})
         }).catch((err)=>{
             console.log(err.message)
         })
+    }
+}
+
+export const reset = () =>{
+    return (dispatch) =>{
+        dispatch({type: actionTypes.RESET})
     }
 }

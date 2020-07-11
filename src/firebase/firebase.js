@@ -13,5 +13,6 @@ import * as firebase from "firebase";
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   const firestore = firebase.firestore();
-  export {firebase as default, firestore};
+  const storage = firebase.storage();
+  export {firebase as default, firestore, storage};
 //   firebase.analytics();

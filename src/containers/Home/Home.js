@@ -1,20 +1,40 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Navbar, PostCard, ImageUpload} from "../../components";
-import { Grid } from "@material-ui/core";
+import { Grid, Typography} from "@material-ui/core";
+import {connect} from "react-redux";
+import * as actionCreator from "../../store/actions";
 import style from "./Home.module.css";
-const Home = () => {
+const Home = ({fetchPosts, fetchedPosts}) => {
+  useEffect(()=>{
+    fetchPosts()
+    return ()=>{
+      actionCreator.unsubscribePosts()
+    }
+  }, [fetchPosts])
   return (
     <div>
       <Navbar />
       <div className={style.container}>
         <Grid container justify="center" className={style.main} >
         <ImageUpload/>
-          <PostCard />
-          <PostCard />
-          <PostCard />
+          {fetchedPosts ?
+            fetchedPosts.map((data, index)=><PostCard key={index} name={data.email} caption={data.caption}/>)
+          : <Typography variant="body2">Nothing to show Here</Typography>
+          }
         </Grid>
       </div>
     </div>
   );
 };
-export default Home;
+const mapStateToProps = (state) =>{
+  return{
+    fetchedPosts: state.posts.posts
+  }
+}
+
+const mapDispatchToProps = (dispatch) =>{
+  return{
+      fetchPosts: () => dispatch(actionCreator.fetchPosts())
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

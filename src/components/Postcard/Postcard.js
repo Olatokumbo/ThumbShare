@@ -3,19 +3,17 @@ import {Grid, CardContent, Card, CardHeader,CardActions, CardMedia, Avatar, Typo
 import SendIcon from '@material-ui/icons/Send';
 import post from "../../assets/images/post.jpg";
 import style from "./PostCard.module.css";
-const PostCard = () => {
+const PostCard = ({name, caption}) => {
   return (
       <Grid item component={Card} md={5} xs={11} className={style.card}>
         <CardHeader
           avatar={<Avatar aria-label="username">R</Avatar>}
-          title="Shrimp and Chorizo Paella"
+          title={name}
           subheader="September 14, 2016"
         />
         <CardContent className={style.cardContent}>
           <Typography variant="body2" color="textSecondary" component="p">
-            This impressive paella is a perfect party dish and a fun meal to
-            cook together with your guests. Add 1 cup of frozen peas along with
-            the mussels, if you like.
+          {caption}
           </Typography>
           <CardMedia
           className={style.media}

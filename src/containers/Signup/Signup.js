@@ -1,11 +1,16 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {TextField, Button, Typography} from "@material-ui/core";
 import logo from "../../assets/images/share.png";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import * as actionCreator from "../../store/actions";
 import style from "./Signup.module.css";
-const Signup = ({signup}) => {
+const Signup = ({signup, error, reset}) => {
+  useEffect(()=>{
+    return () =>{
+      reset();
+    }
+  }, [reset])
   const signupForm = (e) =>{
     e.preventDefault();
     let fName = e.target.elements.fName.value;
@@ -31,6 +36,7 @@ const Signup = ({signup}) => {
         <TextField name="email" type="email" className={style.input} variant="outlined" label="Email" size="small"/>
         <TextField name="password" type="password" className={style.input} variant="outlined" label="Password" size="small"/>
         <Button type="submit" className={style.signup} variant="contained" size="small" color="primary">Sign up</Button>
+        <Typography color="error" variant="body2">{error}</Typography>
         <Typography variant="body2">Have an Account already?
         <Link to="/" style={{textDecoration: "none"}}> Sign In</Link>
          </Typography>
@@ -40,10 +46,17 @@ const Signup = ({signup}) => {
   );
 };
 
+const mapStateToProps = (state) =>{
+  return{
+    error: state.auth.authError
+  }
+};
+
 const mapDispatchToProps = (dispatch) =>{
   return{
-      signup: (credentials)=> dispatch(actionCreator.startSignup(credentials))
+      signup: (credentials)=> dispatch(actionCreator.startSignup(credentials)),
+      reset: () => dispatch(actionCreator.reset())
   }
 }
 
-export default connect(null, mapDispatchToProps)(Signup);
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
