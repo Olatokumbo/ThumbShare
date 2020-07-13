@@ -10,3 +10,7 @@ export {
     addPosts,
     unsubscribePosts
 } from "./posts";
+
+export {
+    updateProfilePhoto
+} from "./profile"
