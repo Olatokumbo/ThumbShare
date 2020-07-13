@@ -23,9 +23,9 @@ const store = createStore(
 firebase.auth().onAuthStateChanged((user)=>{
     ReactDOM.render(<Provider store={store}><App/></Provider>, document.getElementById("root"));
     if(user){
-        console.log("LOGGED IN USER")
+        console.log("LOGGED IN USER");
         console.log(user);
-        store.dispatch({type: actionType.SIGNIN_SUCCESS, uid: user.uid, displayName: user.displayName});
+        store.dispatch({type: actionType.SIGNIN_SUCCESS, uid: user.uid, displayName: user.displayName, photoURL: user.photoURL});
     }
     else{
         console.log("LOGGED OUT USER")

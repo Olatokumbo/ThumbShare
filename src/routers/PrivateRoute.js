@@ -1,10 +1,12 @@
 import React from "react";
 import {connect} from "react-redux";
-import {Route, Redirect} from "react-router-dom"
+import {Route, Redirect} from "react-router-dom";
+import Navbar from "../components/Navbar/Navbar";
 const PrivateRoute = ({isAuthenticated, component: Component, ...rest}) => (
     <Route {...rest} component={(props) => (
         isAuthenticated ? (
           <div>
+            <Navbar/>
             <Component {...props} />
           </div>
         ) : (

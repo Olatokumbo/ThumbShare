@@ -6,7 +6,7 @@ import moment from "moment";
 import style from "./PostCard.module.css";
 const PostCard = ({name, caption, image, timestamp}) => {
   return (
-      <Grid item component={Card} md={5} xs={11} className={style.card}>
+      <Grid item component={Card} md={4} xs={11} className={style.card}>
         <CardHeader
           avatar={<Avatar aria-label="username">R</Avatar>}
           title={name}
@@ -20,7 +20,7 @@ const PostCard = ({name, caption, image, timestamp}) => {
           className={style.media}
           component="img"
           image={image}
-          title="Paella dish"
+          title={caption}
         />
         </CardContent>
         <CardActions disableSpacing>

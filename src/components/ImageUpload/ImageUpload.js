@@ -15,7 +15,7 @@ const ImageUpload = ({displayName, getProgress, upload}) => {
     e.target.elements.image.value=null;
   }
   return (
-    <Grid item component={Card} md={5} xs={11} className={style.card}>
+    <Grid item component={Card} md={4} xs={11} className={style.card}>
       <CardContent>
       <form className={style.form} onSubmit={uploadForm}>
       <TextField type="text" name="caption" label="Caption" variant="outlined" size="small" onChange={(e)=>setCaption(e.target.value)} required/>

@@ -2,7 +2,8 @@ import * as actionTypes from "../actions/actionTypes";
 const initialState = {
     authError: null,
     uid: null,
-    displayName: null
+    displayName: null,
+    photoURL: null
 }
 
 const authReducer = (state = initialState, action) =>{
@@ -12,7 +13,8 @@ const authReducer = (state = initialState, action) =>{
                 ...state,
                 authError: null,
                 uid: action.uid,
-                displayName: action.displayName
+                displayName: action.displayName,
+                photoURL: action.photoURL
             }
         case actionTypes.SIGNIN_FAILED:
             return{
@@ -24,7 +26,8 @@ const authReducer = (state = initialState, action) =>{
                 ...state,
                 authError: null,
                 uid: action.uid,
-                displayName: action.displayName
+                displayName: action.displayName,
+                photoURL: action.photoURL
             }
         case actionTypes.SIGNUP_FAILED:
             return{

@@ -1,5 +1,6 @@
 .card{
     margin: 0.5rem 1rem !important;
+    width: inherit !important
 }
 .cardContent{
     padding: 0 16px !important;

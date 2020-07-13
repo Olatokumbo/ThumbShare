@@ -2,8 +2,9 @@ import React from "react";
 import Signup from "./containers/Signup/Signup";
 import Signin from "./containers/Signin/Signin";
 import Home from "./containers/Home/Home";
+import Profile from "./containers/Profile/Profile";
 import {PrivateRoute, PublicRoute} from "./routers";
-import { BrowserRouter as Router, Switch} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import style from "./App.module.css";
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
           <PublicRoute exact path="/" component={Signin} />
           <PublicRoute path="/signup" component={Signup} />
           <PrivateRoute path="/home" component={Home} />
+          <Route path="/profile" component={Profile}/>
         </Switch>
       </Router>
     </div>

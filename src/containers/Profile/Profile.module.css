@@ -1,0 +1,29 @@
+.avatar{
+    width: 8rem !important;
+    height: 8rem !important;
+}
+
+.profileImage{
+    display: flex;
+    align-items: flex-end;
+    margin-right: 1rem;
+    justify-content: flex-end;
+}
+.changeProfileButton{
+    position: absolute !important;
+    background-color: rgba(77, 195, 250, 0.548) !important;
+}
+
+.cardContent{
+    /* background-color: rgb(211, 211, 211) !important; */
+    display: flex !important;
+    align-items: flex-start !important;
+}
+
+.user{
+    display: flex;
+    flex-direction: column;
+}
+.displayName{
+    margin-top: 1rem !important;
+}

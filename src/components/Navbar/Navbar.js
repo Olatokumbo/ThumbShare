@@ -2,11 +2,12 @@ import React, {useState} from "react";
 import {Toolbar, AppBar, Typography, Menu, MenuItem } from "@material-ui/core";
 import {Link} from "react-router-dom"; 
 import logo from "../../assets/images/share.png";
-import profile from "../../assets/images/default.jpg";
 import {connect} from "react-redux";
+import {useHistory} from "react-router-dom";
 import * as actionCreator from "../../store/actions";
 import style from "./Navbar.module.css";
-const Navbar = ({logout, displayName}) =>{
+const Navbar = ({logout, displayName, photoURL}) =>{
+  const history = useHistory()
     const [anchorEl, setAnchorEl] = useState(null);
 
     const handleClick = (event) => {
@@ -41,7 +42,7 @@ const Navbar = ({logout, displayName}) =>{
               </Typography>
               <img
                 className={style.profileImage}
-                src={profile}
+                src={photoURL}
                 alt="profile"
                 onClick={handleClick}
               />
@@ -54,6 +55,7 @@ const Navbar = ({logout, displayName}) =>{
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
+              <MenuItem onClick={() => history.push('/profile')}>Profile</MenuItem>
               <MenuItem onClick={logout}>Logout</MenuItem>
               </Menu>
             </div>
@@ -65,7 +67,8 @@ const Navbar = ({logout, displayName}) =>{
 
 const mapStateToProps = (state) =>{
   return{
-    displayName: state.auth.displayName
+    displayName: state.auth.displayName,
+    photoURL: state.auth.photoURL
   }
 }
 

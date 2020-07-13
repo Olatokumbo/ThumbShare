@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Navbar, PostCard, ImageUpload } from "../../components";
+import {PostCard, ImageUpload } from "../../components";
 import { Grid, Typography } from "@material-ui/core";
 import { connect } from "react-redux";
 import * as actionCreator from "../../store/actions";
@@ -13,7 +13,6 @@ const Home = ({ fetchPosts, fetchedPosts }) => {
   }, [fetchPosts]);
   return (
     <div>
-      <Navbar />
       <div className={style.container}>
         <Grid container justify="center" className={style.main}>
           <ImageUpload />
