@@ -1,10 +1,41 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {Grid, CardContent, Card, CardHeader,CardActions, CardMedia, Avatar, Typography, TextField, Button} from "@material-ui/core";
 import SendIcon from '@material-ui/icons/Send';
 import moment from "moment";
-// import post from "../../assets/images/post.jpg";
+import {connect} from "react-redux";
+import firebase, {firestore} from "../../firebase/firebase"; 
 import style from "./PostCard.module.css";
-const PostCard = ({name, caption, image, timestamp}) => {
+const PostCard = ({postId, name, caption, image, timestamp, user}) => {
+  const [comments, setComments] = useState([]); 
+  const [comment, setComment] = useState("");
+  const commentForm = (e) =>{
+      e.preventDefault();
+      firestore
+      .collection("posts")
+      .doc(postId)
+      .collection("comments")
+      .add({
+          text: comment,
+          name: user,
+          timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      })
+      e.target.elements.comment.value = "";
+  }
+  useEffect(()=>{
+    let unsubscribe;
+    if(postId){
+      unsubscribe =  firestore
+      .collection("posts")
+      .doc(postId)
+      .collection("comments")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot)=>{
+        setComments(snapshot.docs.map((doc)=> doc.data()))
+      });
+      return () =>{
+        unsubscribe();
+      }
+  }}, [postId])
   return (
       <Grid item component={Card} md={4} xs={11} className={style.card}>
         <CardHeader
@@ -23,9 +54,14 @@ const PostCard = ({name, caption, image, timestamp}) => {
           title={caption}
         />
         </CardContent>
+        <div className={style.comments}>
+        {
+          comments.map((data, index)=><Typography key={index} variant="body2"><strong>{data.name}</strong> {data.text}</Typography>)
+        }
+        </div>
         <CardActions disableSpacing>
-        <form className={style.form}>
-        <TextField type="text" className={style.textField} label="Write a Comment" size="small" variant="outlined"/>
+        <form className={style.form} onSubmit={commentForm}>
+        <TextField name="comment" type="text" className={style.textField} onChange={(e)=> setComment(e.target.value)} label="Write a Comment" size="small" variant="outlined"/>
         <Button className={style.post} type="submit" color="primary" size="small"><SendIcon/></Button>
         </form>
         </CardActions>
@@ -33,4 +69,10 @@ const PostCard = ({name, caption, image, timestamp}) => {
   );
 };
 
-export default PostCard;
+const mapStateToProps = (state) =>{
+  return{
+    user: state.auth.displayName
+  }
+}
+
+export default connect(mapStateToProps)(PostCard);

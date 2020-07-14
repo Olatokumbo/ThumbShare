@@ -4,7 +4,7 @@ export const fetchPosts = () =>{
     return (dispatch) =>{
         let postsArray = [] 
         firestore.collection("posts").orderBy("timestamp", "desc").onSnapshot((snapShot)=>{
-            snapShot.docs.map((doc)=> postsArray.push(doc.data()))
+            snapShot.docs.map((doc)=> postsArray.push({...{id: doc.id}, ...doc.data()}))
             dispatch({type: actionTypes.FETCH_POSTS, posts: postsArray})
             postsArray =[];
         })

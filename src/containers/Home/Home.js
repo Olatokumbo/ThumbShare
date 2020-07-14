@@ -17,9 +17,10 @@ const Home = ({ fetchPosts, fetchedPosts }) => {
         <Grid container justify="center" className={style.main}>
           <ImageUpload />
           {fetchedPosts ? (
-            fetchedPosts.map((data, index) => (
+            fetchedPosts.map((data) => (
               <PostCard
-                key={index}
+                key={data.id}
+                postId={data.id}
                 name={data.name}
                 caption={data.caption}
                 image={data.imageUrl}

@@ -10,6 +10,9 @@
     border-radius: 10px !important;
     margin-top: 0.5rem !important;
 }
+.comments{
+    padding: 1rem 1rem 0rem 1rem;
+}
 .form{
     display: flex !important;
     align-items: center !important;
