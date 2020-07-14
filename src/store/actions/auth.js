@@ -17,7 +17,7 @@ export const startSignup = (credentials) => {
                 displayName: name,
                 photoURL: profileUrl
             }).then(()=>{
-              dispatch({ type: actionTypes.SIGNUP_SUCCESS, uid: authUser.user.uid, displayName: name, photoURL: profileUrl });
+              dispatch({ type: actionTypes.SIGNUP_SUCCESS, uid: authUser.user.uid, displayName: name, photoURL: profileUrl, email: authUser.user.email });
             }).catch((err) => {
               console.log(err.message);
               dispatch({ type: actionTypes.SIGNUP_FAILED, error: err.message });

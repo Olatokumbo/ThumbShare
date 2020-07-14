@@ -32,7 +32,8 @@ export const addPosts = (data) =>{
                     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                     caption: data.caption,
                     imageUrl: url,
-                    name:data.displayName
+                    name:data.displayName,
+                    photoURL: data.photoURL
                 })
                 dispatch({type: actionTypes.RESET})
             })

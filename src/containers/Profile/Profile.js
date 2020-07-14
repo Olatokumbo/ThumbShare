@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import * as actionCreator from "../../store/actions";
 import style from "./Profile.module.css";
-const Profile = ({photoURL, updateProfilePhoto}) => {
+const Profile = ({photoURL, updateProfilePhoto, displayName, email}) => {
   return (
     <div>
       <Grid container justify="center">
@@ -18,8 +18,8 @@ const Profile = ({photoURL, updateProfilePhoto}) => {
                 </label> 
             </div>
             <div className={style.user}>
-            <Typography className={style.displayName} variant="h5" gutterBottom>David King</Typography>
-            <Typography className={style.displayName} variant="body1">davidking@gmail.com</Typography>
+            <Typography className={style.displayName} variant="h5" gutterBottom>{displayName}</Typography>
+            <Typography className={style.displayName} variant="body1">{email}</Typography>
             </div>
           </CardContent>
         </Grid>
@@ -30,6 +30,8 @@ const Profile = ({photoURL, updateProfilePhoto}) => {
 
 const mapStateToProps = (state) =>{
   return{
+    email: state.auth.email,
+    displayName: state.auth.displayName,
     photoURL: state.auth.photoURL
   }
 }

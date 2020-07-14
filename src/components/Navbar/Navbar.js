@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Toolbar, AppBar, Typography, Menu, MenuItem } from "@material-ui/core";
+import {Toolbar, AppBar, Typography, Menu, MenuItem, Avatar } from "@material-ui/core";
 import {Link} from "react-router-dom"; 
 import logo from "../../assets/images/share.png";
 import {connect} from "react-redux";
@@ -22,7 +22,7 @@ const Navbar = ({logout, displayName, photoURL}) =>{
         <Toolbar variant="dense" className={style.toolbar}>
           <div className={style.brand}>
             <Link style={{ textDecoration: "none" }} to="/home">
-              <img className={style.logo} src={logo} alt="logo" />
+              <Avatar src={logo} />
             </Link>
             { /*<input
               className={style.searchInput}

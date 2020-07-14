@@ -5,7 +5,7 @@ import moment from "moment";
 import {connect} from "react-redux";
 import firebase, {firestore} from "../../firebase/firebase"; 
 import style from "./PostCard.module.css";
-const PostCard = ({postId, name, caption, image, timestamp, user}) => {
+const PostCard = ({postId, name, caption, image, timestamp, user, photoURL}) => {
   const [comments, setComments] = useState([]); 
   const [comment, setComment] = useState("");
   const commentForm = (e) =>{
@@ -28,7 +28,7 @@ const PostCard = ({postId, name, caption, image, timestamp, user}) => {
       .collection("posts")
       .doc(postId)
       .collection("comments")
-      .orderBy("timestamp", "desc")
+      .orderBy("timestamp", "asc")
       .onSnapshot((snapshot)=>{
         setComments(snapshot.docs.map((doc)=> doc.data()))
       });
@@ -37,9 +37,9 @@ const PostCard = ({postId, name, caption, image, timestamp, user}) => {
       }
   }}, [postId])
   return (
-      <Grid item component={Card} md={4} xs={11} className={style.card}>
+      <Grid item component={Card} md={5} xs={11} className={style.card}>
         <CardHeader
-          avatar={<Avatar aria-label="username">R</Avatar>}
+          avatar={<Avatar aria-label="username" src={photoURL}/>}
           title={name}
           subheader={timestamp? moment(timestamp.toDate()).calendar() : "Loading..."}
         />

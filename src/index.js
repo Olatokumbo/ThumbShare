@@ -25,7 +25,7 @@ firebase.auth().onAuthStateChanged((user)=>{
     if(user){
         console.log("LOGGED IN USER");
         console.log(user);
-        store.dispatch({type: actionType.SIGNIN_SUCCESS, uid: user.uid, displayName: user.displayName, photoURL: user.photoURL});
+        store.dispatch({type: actionType.SIGNIN_SUCCESS, uid: user.uid, displayName: user.displayName, photoURL: user.photoURL, email: user.email});
     }
     else{
         console.log("LOGGED OUT USER")

@@ -4,4 +4,3 @@ export { fetchPosts, addPosts, unsubscribePosts } from "./posts";
 
 export { updateProfilePhoto } from "./profile";
 
-export { fetchComments } from "./comments";

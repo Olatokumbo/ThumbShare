@@ -4,18 +4,18 @@ import {connect} from "react-redux";
 import * as actionCreators from "../../store/actions"
 import style from "./ImageUpload.module.css";
 
-const ImageUpload = ({displayName, getProgress, upload}) => {
+const ImageUpload = ({displayName, getProgress, upload, photoURL}) => {
   const [caption, setCaption] = useState("");
   const [image, setImage] = useState(null); 
   const uploadForm = (e) =>{
     e.preventDefault();
     // console.log({displayName, caption, image})
-    upload({displayName, caption, image});
+    upload({displayName, caption, image, photoURL});
     e.target.elements.caption.value="";
     e.target.elements.image.value=null;
   }
   return (
-    <Grid item component={Card} md={4} xs={11} className={style.card}>
+    <Grid item component={Card} md={5} xs={11} className={style.card}>
       <CardContent>
       <form className={style.form} onSubmit={uploadForm}>
       <TextField type="text" name="caption" label="Caption" variant="outlined" size="small" onChange={(e)=>setCaption(e.target.value)} required/>
@@ -32,6 +32,7 @@ const ImageUpload = ({displayName, getProgress, upload}) => {
 const mapStateToProps = (state) =>{
   return{
     displayName: state.auth.displayName,
+    photoURL: state.auth.photoURL,
     getProgress: state.posts.progress
   }
 }

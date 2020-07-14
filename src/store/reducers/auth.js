@@ -4,6 +4,7 @@ const initialState = {
   uid: null,
   displayName: null,
   photoURL: null,
+  email: null
 };
 
 const authReducer = (state = initialState, action) => {
@@ -15,6 +16,7 @@ const authReducer = (state = initialState, action) => {
         uid: action.uid,
         displayName: action.displayName,
         photoURL: action.photoURL,
+        email: action.email
       };
     case actionTypes.SIGNIN_FAILED:
       return {
@@ -28,6 +30,7 @@ const authReducer = (state = initialState, action) => {
         uid: action.uid,
         displayName: action.displayName,
         photoURL: action.photoURL,
+        email: action.email
       };
     case actionTypes.SIGNUP_FAILED:
       return {

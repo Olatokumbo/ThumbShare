@@ -25,6 +25,7 @@ const Home = ({ fetchPosts, fetchedPosts }) => {
                 caption={data.caption}
                 image={data.imageUrl}
                 timestamp={data.timestamp}
+                photoURL={data.photoURL}
               />
             ))
           ) : (
