@@ -1,4 +1,7 @@
-import * as firebase from "firebase";
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
+import 'firebase/storage';
   // Your web app's Firebase configuration
   var firebaseConfig = {
     apiKey: "AIzaSyC4x-2BaPJ1pKk5USkNRly74r1kwWOWVNM",
