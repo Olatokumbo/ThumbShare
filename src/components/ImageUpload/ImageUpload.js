@@ -4,13 +4,13 @@ import {connect} from "react-redux";
 import * as actionCreators from "../../store/actions"
 import style from "./ImageUpload.module.css";
 
-const ImageUpload = ({displayName, getProgress, upload, photoURL}) => {
+const ImageUpload = ({displayName, getProgress, upload, photoURL, uid}) => {
   const [caption, setCaption] = useState("");
   const [image, setImage] = useState(null); 
   const uploadForm = (e) =>{
     e.preventDefault();
     // console.log({displayName, caption, image})
-    upload({displayName, caption, image, photoURL});
+    upload({displayName, caption, image, photoURL, uid});
     e.target.elements.caption.value="";
     e.target.elements.image.value=null;
   }
@@ -33,7 +33,8 @@ const mapStateToProps = (state) =>{
   return{
     displayName: state.auth.displayName,
     photoURL: state.auth.photoURL,
-    getProgress: state.posts.progress
+    getProgress: state.posts.progress,
+    uid: state.auth.uid
   }
 }
 

@@ -33,6 +33,7 @@ export const addPosts = (data) =>{
                     caption: data.caption,
                     imageUrl: url,
                     name:data.displayName,
+                    userId: data.uid,
                     photoURL: data.photoURL
                 })
                 dispatch({type: actionTypes.RESET})

@@ -4,7 +4,7 @@ import {createStore, combineReducers, applyMiddleware, compose} from "redux";
 import thunk from "redux-thunk";
 import {Provider} from "react-redux";
 import firebase from "./firebase/firebase";
-import {authReducer, postReducer} from "./store/reducers";
+import {authReducer, postReducer, profileReducer} from "./store/reducers";
 import * as actionType from "./store/actions/actionTypes";
 import App from "./App";
 
@@ -12,7 +12,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
     auth: authReducer,
-    posts: postReducer
+    posts: postReducer,
+    profile: profileReducer
 });
 
 const store = createStore(

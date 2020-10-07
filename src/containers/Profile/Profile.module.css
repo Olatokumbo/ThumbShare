@@ -1,5 +1,7 @@
+
 .card{
     margin-top: 1rem !important;
+    width: inherit !important;
 }
 .avatar{
     width: 8rem !important;
@@ -29,4 +31,11 @@
 }
 .displayName{
     margin-top: 1rem !important;
+}
+
+.photoGrid{
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 40px;
+    margin-top: 4rem !important;
 }

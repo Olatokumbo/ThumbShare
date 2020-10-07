@@ -1,4 +1,4 @@
-import firebase, {storage} from "../../firebase/firebase";
+import firebase, {storage, firestore} from "../../firebase/firebase";
 import * as actionTypes from "../../store/actions/actionTypes";
 export const updateProfilePhoto = (photo) =>{
     return (dispatch)=>{
@@ -25,5 +25,23 @@ export const updateProfilePhoto = (photo) =>{
             })
         }
         );
+    }
+}
+
+export const getMyPhotos = (uid) =>{
+    return (dispatch)=>{
+        let myPhotos = [];
+        firestore.collection("posts")
+        .where("userId", "==", uid)
+        .get()
+        .then((snapshot)=>{
+            snapshot.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                myPhotos.push({id:doc.id, ...doc.data()});
+            });
+        }).then(()=>{
+            dispatch({type: actionTypes.FETCH_MY_POSTS, myPhotos})
+        })
+    
     }
 }

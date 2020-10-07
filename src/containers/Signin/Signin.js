@@ -31,7 +31,7 @@ const Signin = ({signin, error, reset}) =>{
           <TextField name="password" type="password" className={style.input} variant="outlined" label="Password" size="small"/>
           <Button type="submit" className={style.signin} variant="contained" size="small" color="primary">Sign In</Button>
           <Typography color="error" variant="body2">{error}</Typography>
-          <Typography variant="body2">Have an Account already? 
+          <Typography variant="body2">Don't have an Account? 
           <Link to="/signup" style={{textDecoration: "none"}}> Sign Up</Link>
           </Typography>
           </form>
