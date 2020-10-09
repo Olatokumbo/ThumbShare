@@ -22,7 +22,7 @@
 .cardContent{
     /* background-color: rgb(211, 211, 211) !important; */
     display: flex !important;
-    align-items: flex-start !important;
+    align-items: flex-start ;
 }
 
 .user{
@@ -35,7 +35,25 @@
 
 .photoGrid{
     display: grid;
-    grid-auto-flow: column;
+    /* grid-auto-flow: column; */
+    grid-template-columns: auto auto auto;
     grid-gap: 40px;
     margin-top: 4rem !important;
+}
+@media only screen and (max-width: 980px){
+    .photoGrid{
+        grid-template-columns: auto auto;
+    }
+}
+
+@media only screen and (max-width: 560px){
+    .photoGrid{
+        grid-template-columns: auto;
+    }
+    .cardContent{
+        flex-direction: column;
+    }
+    .profileImage, .user{
+        margin: auto !important;
+    }
 }
